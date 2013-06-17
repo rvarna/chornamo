@@ -1,1 +1,20 @@
 An attempt at Chord with replication as in Dynamo.
+
+
+Installation (Ubuntu):
+
+1) Download Apache Thrift.
+
+2) Install JDK (if it isn't already).
+
+3) Install the dependencies given at: http://thrift.apache.org/docs/install/ubuntu/
+
+4) Install Ant.
+
+5) Follow the instructions at: http://thrift.apache.org/docs/BuildingFromSource/ to install Apache Thrift
+
+6) Add the libthrift jar in thrift_home/lib/java/build to CLASSPATH
+
+7) Download and extract slf4j from: http://www.slf4j.org/download.html
+
+8) Add the slf4j api jar and slf4j jdk jar to CLASSPATH
