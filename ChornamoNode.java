@@ -9,9 +9,9 @@ public class ChornamoNode implements Chornamo.Iface {
 
     private String predecessor;
     private String successor;
-    private Map<String, String> kv_store;
-    private List<String> successor_list;
-    private Map<String, String> finger_table;
+    private Map<String, String> kvStore;
+    private List<String> successorList;
+    private Map<String, String> fingerTable;
     private String hostname;
     private int port;
     private BigInteger selfHashcode;
@@ -27,9 +27,9 @@ public class ChornamoNode implements Chornamo.Iface {
         nodeKey = Utils.encode_node(hostname, port);
         successor = nodeKey;
         selfHashcode = Utils.getHash(nodeKey);
-        kv_store = new HashMap<String, String>();
-        successor_list = new ArrayList<String>();
-        finger_table = new HashMap<String, String>();
+        kvStore = new HashMap<String, String>();
+        successorList = new ArrayList<String>();
+        fingerTable = new HashMap<String, String>();
     }
 
     public ChornamoNode(String selfNode, String selfPort) {
@@ -45,30 +45,30 @@ public class ChornamoNode implements Chornamo.Iface {
         return response;
     }
 
-    public GetResponse kv_get(String key) {
+    public GetResponse kvGet(String key) {
         GetResponse response = new GetResponse();
         response.status = ChornamoStatus.OK;
         return response;
     }
 
-    public String get_predecessor() {
+    public String getPredecessor() {
         return predecessor;
     }
 
-    public String get_successor() {
+    public String getSuccessor() {
         return successor;
     }
 
 
-    public String get_successor_for_hashcode(String hashcode) {
+    public String getSuccessorForHashcode(String hashcode) {
         return successor;
     }
 
-    public SuccessorListResponse get_successor_list() {
+    public SuccessorListResponse getSuccessorList() {
         return new SuccessorListResponse();
     }
 
-    public DataResponse get_init_data(String hashcode) {
+    public DataResponse getInitData(String hashcode) {
         return new DataResponse();
     }
 
@@ -76,7 +76,7 @@ public class ChornamoNode implements Chornamo.Iface {
         return ChornamoStatus.OK;
     }
 
-    public ChornamoStatus kv_put(String key, String value) {
+    public ChornamoStatus kvPut(String key, String value) {
         return ChornamoStatus.OK;
     }
 
@@ -84,15 +84,15 @@ public class ChornamoNode implements Chornamo.Iface {
         return ChornamoStatus.OK;
     }
 
-    public ChornamoStatus notify_predecessor(String predecessor) {
+    public ChornamoStatus notifyPredecessor(String predecessor) {
         return ChornamoStatus.OK;
     }
 
-    public void print_details() {
+    public void printDetails() {
 
     }
 
-    public void print_successor_list() {
+    public void printSuccessorList() {
 
     }
 
@@ -100,16 +100,40 @@ public class ChornamoNode implements Chornamo.Iface {
         return ChornamoStatus.OK;
     }
 
-    public long get_key_count() {
-        return kv_store.size();
+    public long getKeyCount() {
+        return kvStore.size();
     }
 
-    public ChornamoStatus replicate_put(String key, String value) {
+    public ChornamoStatus replicatePut(String key, String value) {
         return ChornamoStatus.OK;
     }
 
-    public ChornamoStatus kv_put_keys(Map<String, String> input_dict) {
+    public ChornamoStatus kvPutKeys(Map<String, String> input_dict) {
         return ChornamoStatus.OK;
+    }
+
+    private class Stabilizer implements Runnable {
+        public void run() {
+            stabilize();
+            fixFingerTables();
+        }
+
+        private void stabilize() {
+
+        }
+
+        private void fixFingerTables() {
+
+        }
+    }
+
+    private synchronized void handleSuccessorFailure() {
+
+    }
+
+
+    private synchronized void handleFingerTableFailure() {
+
     }
 
 }
