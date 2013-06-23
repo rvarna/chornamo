@@ -1,6 +1,7 @@
 enum ChornamoStatus {
   OK = 1,
-  ERROR = 2
+  ERROR = 2,
+  KEY_NOT_FOUND = 3
 }
 
 struct DataResponse {

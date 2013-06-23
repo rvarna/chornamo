@@ -22,7 +22,7 @@ public class ChornamoServer {
  
             TServer server = new TNonblockingServer(new TNonblockingServer.Args(serverTransport).
                     processor(processor));
-            System.out.println("Starting server on port 7911 ...");
+            System.out.println("Starting server on port " + args[1]);
             server.serve();
         } catch (TTransportException e) {
             e.printStackTrace();

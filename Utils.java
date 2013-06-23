@@ -15,17 +15,17 @@ public class Utils {
         }
     }
 
-    public static boolean isHashInBetween(BigInteger hash, BigInteger begin, BigInteger end) {
+    public static boolean isHashcodeBetween(BigInteger hashcode, BigInteger begin, BigInteger end) {
         if (end.compareTo(begin) < 0) {
-            if (hash.compareTo(end) > 0 && hash.compareTo(begin) > 0) {
+            if (hashcode.compareTo(end) > 0 && hashcode.compareTo(begin) > 0) {
                 return true;
             }
 
-            if (hash.compareTo(end) < 0 && hash.compareTo(begin) < 0) {
+            if (hashcode.compareTo(end) < 0 && hashcode.compareTo(begin) < 0) {
                 return true;
             }
         }
-        else if (hash.compareTo(begin) > 0 && hash.compareTo(end) < 0) {
+        else if (hashcode.compareTo(begin) > 0 && hashcode.compareTo(end) < 0) {
             return true;
         }
 
@@ -39,5 +39,13 @@ public class Utils {
 
     public static String encode_node(String hostname, Integer port) {
         return hostname + DELIMITER + port;
+    }
+
+    public static BigInteger getPower(Integer a, int b) {
+        return (new BigInteger(a.toString()).pow(b));
+    }
+
+    public static BigInteger getModulus(BigInteger a, BigInteger b) {
+        return a.mod(b);
     }
 }
